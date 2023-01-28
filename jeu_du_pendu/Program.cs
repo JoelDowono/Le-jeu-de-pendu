@@ -1,4 +1,5 @@
 ﻿using System;
+using AsciiArt;
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
@@ -58,6 +59,9 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
             while(viesRestantes > 0)
             {
+                Console.WriteLine(Ascii.PENDU[NB_VIES - viesRestantes]);
+                Console.WriteLine();
+
                 AfficherMot(mot, lettreDevinees);
                 Console.WriteLine();
                 var lettre = DemanderUneLettre();
@@ -79,9 +83,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
                     Console.WriteLine("Vies restante : " + viesRestantes);
                 }
 
-                Console.WriteLine("Le mot ne contient pas les lettres : " + String.Join(", ", lettreExclues));
+                if(lettreExclues.Count > 0)
+                {
+                    Console.WriteLine("Le mot ne contient pas les lettres : " + String.Join(", ", lettreExclues));
+                }
                 Console.WriteLine();
             }
+
+            Console.WriteLine(Ascii.PENDU[NB_VIES - viesRestantes]);
             
             if (viesRestantes == 0)
             {
