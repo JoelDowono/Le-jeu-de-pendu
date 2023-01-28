@@ -21,6 +21,18 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine();
         }
 
+        static bool ToutesLettresDevinees(string mot, List<char> lettres)
+        {
+            foreach(char lettre in lettres)
+            {
+                mot = mot.Replace(lettre.ToString(), "");
+            }
+            if(mot.Length == 0)
+            {
+                return true;
+            }
+            return false;
+        }
         static char DemanderUneLettre()
         {
             while(true)
@@ -54,6 +66,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 {
                     Console.WriteLine("Cette lettre est dans le mot");
                     lettreDevinees.Add(lettre);
+                    if(ToutesLettresDevinees(mot, lettreDevinees))
+                    {
+                        break;
+                    }
                 }
                 else
                 {
@@ -67,6 +83,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
             if (viesRestantes == 0)
             {
                 Console.WriteLine("PERDU ! Le mot était : " + mot);
+            }
+            else
+            {
+                AfficherMot(mot, lettreDevinees);
+                Console.WriteLine();
+                Console.WriteLine("GAGNE !");
             }
         }
         static void Main(string[] args)
