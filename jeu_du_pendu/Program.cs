@@ -40,8 +40,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void DevinerMot(string mot)
         {
             var lettreDevinees = new List<char>();
+            const int NB_VIES = 6;
+            int viesRestantes = NB_VIES;
 
-            while(true)
+            while(viesRestantes > 0)
             {
                 AfficherMot(mot, lettreDevinees);
                 Console.WriteLine();
@@ -56,8 +58,15 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 else
                 {
                     Console.WriteLine("Cette lettre n'est pas dans le mot");
+                    viesRestantes--;
+                    Console.WriteLine("Vies restante : " + viesRestantes);
                 }
                 Console.WriteLine();
+            }
+            
+            if (viesRestantes == 0)
+            {
+                Console.WriteLine("PERDU ! Le mot était : " + mot);
             }
         }
         static void Main(string[] args)
