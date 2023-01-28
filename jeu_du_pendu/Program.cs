@@ -21,19 +21,53 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine();
         }
 
+        static char DemanderUneLettre()
+        {
+            while(true)
+            {
+                Console.Write("Rentrez une Lettre: ");
+                string reponse = Console.ReadLine();
+
+                if (reponse.Length == 1)
+                {
+                    reponse = reponse.ToUpper();
+                    return reponse[0];
+                }
+                Console.WriteLine("Erreur : Vous devez rentrer une lettre");
+            }
+        }
+
         static void DevinerMot(string mot)
         {
-            //AfficherMot()
+            var lettreDevinees = new List<char>();
 
-            //DemanderUneLettre()
+            while(true)
+            {
+                AfficherMot(mot, lettreDevinees);
+                Console.WriteLine();
+                var lettre = DemanderUneLettre();
+                Console.Clear();
+
+                if (mot.Contains(lettre))
+                {
+                    Console.WriteLine("Cette lettre est dans le mot");
+                    lettreDevinees.Add(lettre);
+                }
+                else
+                {
+                    Console.WriteLine("Cette lettre n'est pas dans le mot");
+                }
+                Console.WriteLine();
+            }
         }
         static void Main(string[] args)
         {
             string mot = "ELEPHANT";
 
-            AfficherMot(mot, new List<char> { 'E', 'L', 'w' });
+            DevinerMot(mot);
+            /*char lettre = DemanderUneLettre();
+            AfficherMot(mot, new List<char> { lettre });*/
 
-            //DevinerMot(mot);
         }
     }
 }
