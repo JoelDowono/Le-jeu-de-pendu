@@ -52,6 +52,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void DevinerMot(string mot)
         {
             var lettreDevinees = new List<char>();
+            var lettreExclues = new List<char>();
             const int NB_VIES = 6;
             int viesRestantes = NB_VIES;
 
@@ -73,10 +74,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 }
                 else
                 {
-                    Console.WriteLine("Cette lettre n'est pas dans le mot");
                     viesRestantes--;
+                    lettreExclues.Add(lettre);
                     Console.WriteLine("Vies restante : " + viesRestantes);
                 }
+
+                Console.WriteLine("Le mot ne contient pas les lettres : " + String.Join(", ", lettreExclues));
                 Console.WriteLine();
             }
             
