@@ -34,11 +34,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
             }
             return false;
         }
-        static char DemanderUneLettre()
+        static char DemanderUneLettre(string message = "Rentrez une Lettre: ")
         {
             while(true)
             {
-                Console.Write("Rentrez une Lettre: ");
+                Console.Write(message);
                 string reponse = Console.ReadLine();
 
                 if (reponse.Length == 1)
@@ -107,14 +107,63 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 Console.WriteLine("GAGNE !");
             }
         }
+
+        static string[] chargerLesMots(string nomFichier)
+        {
+            try
+            {
+                return File.ReadAllLines(nomFichier);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Erreur de lecture du fichier : " + nomFichier + "(" + ex.Message + ")");
+            }
+            return null;
+        }
+
+        static bool DemanderDeRejouer()
+        {
+            char reponse = DemanderUneLettre("Voulez-vous rejouer (o/n) : ");
+
+            if ((reponse == 'o') || (reponse == 'O'))
+            {
+                return true;
+            }
+            else if ((reponse == 'n') || (reponse == 'N'))
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Erreur : Vous devez répondre avec o ou n");
+                return DemanderDeRejouer();
+            }
+        }
+
         static void Main(string[] args)
         {
-            string mot = "ELEPHANT";
+            var mots = chargerLesMots("mots.txt");
 
-            DevinerMot(mot);
-            /*char lettre = DemanderUneLettre();
-            AfficherMot(mot, new List<char> { lettre });*/
-
+            if((mots == null) || (mots.Length == 0))
+            {
+                Console.WriteLine("La liste de mots est vide");
+            }
+            else
+            {
+                while(true)
+                {
+                    Random r = new Random();
+                    int i = r.Next(mots.Length);
+                    string mot = mots[i].Trim().ToUpper();
+                    DevinerMot(mot);
+                    if (!DemanderDeRejouer())
+                    {
+                        break;
+                    }
+                    Console.Clear();
+                }
+                Console.WriteLine("Merci et à bientôt");
+            }
         }
     }
 }

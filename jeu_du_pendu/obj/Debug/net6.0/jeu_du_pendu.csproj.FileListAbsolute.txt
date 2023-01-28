@@ -13,3 +13,4 @@ C:\Users\joeld\OneDrive\Bureau\Udemy\Développeur C#  Formation complète 2023\M
 C:\Users\joeld\OneDrive\Bureau\Udemy\Développeur C#  Formation complète 2023\Mes codes\jeu_du_pendu\jeu_du_pendu\obj\Debug\net6.0\jeu_du_pendu.pdb
 C:\Users\joeld\OneDrive\Bureau\Udemy\Développeur C#  Formation complète 2023\Mes codes\jeu_du_pendu\jeu_du_pendu\obj\Debug\net6.0\jeu_du_pendu.genruntimeconfig.cache
 C:\Users\joeld\OneDrive\Bureau\Udemy\Développeur C#  Formation complète 2023\Mes codes\jeu_du_pendu\jeu_du_pendu\obj\Debug\net6.0\ref\jeu_du_pendu.dll
+C:\Users\joeld\OneDrive\Bureau\Udemy\Développeur C#  Formation complète 2023\Mes codes\jeu_du_pendu\jeu_du_pendu\bin\Debug\net6.0\mots.txt
