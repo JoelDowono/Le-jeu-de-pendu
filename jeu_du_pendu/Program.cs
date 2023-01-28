@@ -78,8 +78,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 }
                 else
                 {
-                    viesRestantes--;
-                    lettreExclues.Add(lettre);
+                    if (!lettreExclues.Contains(lettre))
+                    {
+                        viesRestantes--;
+                        lettreExclues.Add(lettre);
+                    }
+
                     Console.WriteLine("Vies restante : " + viesRestantes);
                 }
 
